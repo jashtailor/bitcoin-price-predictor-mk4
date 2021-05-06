@@ -1,4 +1,5 @@
 import yfinance as yf
+import praw as pw
 import streamlit as st
 
 st.write("""
