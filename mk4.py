@@ -1,6 +1,8 @@
 import yfinance as yf
 import praw as pw
 import tweepy as tw
+import pandas as pd
+import numpy as np
 import streamlit as st
 
 st.write("""
