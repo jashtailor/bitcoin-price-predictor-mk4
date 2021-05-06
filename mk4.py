@@ -110,9 +110,9 @@ dict1 = {'Sentiment': sentiment_lst, 'Number': lst1}
 sent = pd.DataFrame(dict1)
 print(df_reddit, df_reddit_nlp, df_reddit_groupby, sent)
 
-'''
-st.bar_chart(sent)
 
+st.bar_chart(sent)
+'''
 
 st.write("""
 # Simple Stock Price App
