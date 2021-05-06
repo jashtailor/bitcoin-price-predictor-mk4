@@ -4,6 +4,8 @@ import tweepy as tw
 import pandas as pd
 import numpy as np
 import nltk 
+nltk.download('wordnet')
+nltk.download('vader_lexicon')
 from nltk.sentiment.vader import SentimentIntensityAnalyzer as SIA
 from nltk.stem import WordNetLemmatizer, SnowballStemmer
 from nltk.stem.porter import *
