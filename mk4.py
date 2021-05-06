@@ -9,6 +9,73 @@ from nltk.stem import WordNetLemmatizer, SnowballStemmer
 from nltk.stem.porter import *
 import streamlit as st
 
+# reddit credentials
+reddit = pw.Reddit(client_id = 'UYBiraXAwH8bcw',
+                     client_secret = 'RMg2VFM9ncuAwLl61YB301SBfTZkUQ',
+                     user_agent = 'MyAPI/0.0.1',
+                     check_for_async=False
+                    )
+
+# getting posts from the subreddits
+lst_reddit = []
+
+# bitcoin subreddit
+subreddit = reddit.subreddit('bitcoin')
+# hot posts
+for post in subreddit.hot(limit=1000):
+  lst_reddit.append(post.title)
+# new posts
+for post in subreddit.new(limit=1000):
+  lst_reddit.append(post.title)
+
+# CryptoCurrency subreddit
+subreddit = reddit.subreddit('CryptoCurrency')
+# hot posts
+for post in subreddit.hot(limit=1000):
+  lst_reddit.append(post.title)
+# new posts
+for post in subreddit.new(limit=1000):
+  lst_reddit.append(post.title)
+
+# btc subreddit
+subreddit = reddit.subreddit('btc')
+# hot posts
+for post in subreddit.hot(limit=1000):
+  lst_reddit.append(post.title)
+# new posts
+for post in subreddit.new(limit=1000):
+  lst_reddit.append(post.title)
+
+# Crypto_General subreddit
+subreddit = reddit.subreddit('Crypto_General')
+# hot posts
+for post in subreddit.hot(limit=1000):
+  lst_reddit.append(post.title)
+# new posts
+for post in subreddit.new(limit=1000):
+  lst_reddit.append(post.title)
+
+# Coinbase subreddit
+subreddit = reddit.subreddit('Coinbase')
+# hot posts
+for post in subreddit.hot(limit=1000):
+  lst_reddit.append(post.title)
+# new posts
+for post in subreddit.new(limit=1000):
+  lst_reddit.append(post.title)
+
+# Binance subreddit
+subreddit = reddit.subreddit('Binance')
+# hot posts
+for post in subreddit.hot(limit=1000):
+  lst_reddit.append(post.title)
+# new posts
+for post in subreddit.new(limit=1000):
+  lst_reddit.append(post.title)
+ 
+# converting the list into a dataframe and displaying it 
+df_reddit = pd.DataFrame(lst_reddit, columns=['Post Titles'])
+
 st.write("""
 # Simple Stock Price App
 Shown are the stock closing price and volume of Google!
