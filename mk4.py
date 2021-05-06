@@ -9,6 +9,9 @@ nltk.download('vader_lexicon')
 from nltk.sentiment.vader import SentimentIntensityAnalyzer as SIA
 from nltk.stem import WordNetLemmatizer, SnowballStemmer
 from nltk.stem.porter import *
+import plotly.express as px
+import plotly.graph_objects as go
+import plotly.figure_factory as ff
 import streamlit as st
 
 
@@ -109,9 +112,10 @@ lst1 = df_reddit_groupby['Post Titles']
 dict1 = {'Sentiment': sentiment_lst, 'Number': lst1}
 sent = pd.DataFrame(dict1)
 print(df_reddit, df_reddit_nlp, df_reddit_groupby, sent)
+fig = px.bar(sent, x='Sentiment', y='Number', title='Reddit Sentiment Analysis')
+st.plotly_chart(fig)
 
 
-st.bar_chart(sent)
 '''
 
 st.write("""
