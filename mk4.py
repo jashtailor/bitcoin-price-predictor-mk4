@@ -28,8 +28,9 @@ subreddit = reddit.subreddit('bitcoin')
 # hot posts
 for post in subreddit.hot(limit=1000):
   lst_reddit.append(post.title)
+'''
 # new posts
-for post in subreddit.new(limit=1000):
+for post in subreddit.new(limit=10):
   lst_reddit.append(post.title)
 
 # CryptoCurrency subreddit
@@ -76,6 +77,7 @@ for post in subreddit.hot(limit=1000):
 # new posts
 for post in subreddit.new(limit=1000):
   lst_reddit.append(post.title)
+'''
  
 # converting the list into a dataframe and displaying it 
 df_reddit = pd.DataFrame(lst_reddit, columns=['Post Titles'])
@@ -106,6 +108,9 @@ df_reddit_groupby = df_reddit_nlp.groupby('Sentiment').count()
 lst1 = df_reddit_groupby['Post Titles']
 dict1 = {'Sentiment': sentiment_lst, 'Number': lst1}
 sent = pd.DataFrame(dict1)
+print(df_reddit, df_reddit_nlp, df_reddit_groupby, sent)
+
+'''
 st.bar_chart(sent)
 
 
@@ -125,3 +130,4 @@ tickerDf = tickerData.history(period='1d', start='2010-5-31', end='2020-5-31')
 
 st.line_chart(tickerDf.Close)
 st.line_chart(tickerDf.Volume)
+'''
