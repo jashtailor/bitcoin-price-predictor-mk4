@@ -14,6 +14,9 @@ import plotly.graph_objects as go
 import plotly.figure_factory as ff
 import streamlit as st
 
+st.write("""
+# Reddit Sentiment Analysis
+""")
 
 # reddit credentials
 reddit = pw.Reddit(client_id = 'UYBiraXAwH8bcw',
@@ -31,7 +34,6 @@ subreddit = reddit.subreddit('bitcoin')
 # hot posts
 for post in subreddit.hot(limit=1000):
   lst_reddit.append(post.title)
-'''
 # new posts
 for post in subreddit.new(limit=10):
   lst_reddit.append(post.title)
@@ -80,7 +82,7 @@ for post in subreddit.hot(limit=1000):
 # new posts
 for post in subreddit.new(limit=1000):
   lst_reddit.append(post.title)
-'''
+
  
 # converting the list into a dataframe and displaying it 
 df_reddit = pd.DataFrame(lst_reddit, columns=['Post Titles'])
@@ -116,6 +118,9 @@ fig = px.bar(sent, x='Sentiment', y='Number', title='Reddit Sentiment Analysis')
 st.plotly_chart(fig)
 
 
+st.write("""
+# IGNORE THIS
+""")
 '''
 
 st.write("""
