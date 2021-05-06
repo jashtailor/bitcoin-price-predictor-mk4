@@ -3,6 +3,10 @@ import praw as pw
 import tweepy as tw
 import pandas as pd
 import numpy as np
+import nltk 
+from nltk.sentiment.vader import SentimentIntensityAnalyzer as SIA
+from nltk.stem import WordNetLemmatizer, SnowballStemmer
+from nltk.stem.porter import *
 import streamlit as st
 
 st.write("""
