@@ -14,6 +14,60 @@ import plotly.graph_objects as go
 import plotly.figure_factory as ff
 import streamlit as st
 
+
+import ssl
+import fbprophet
+from fbprophet import Prophet
+from fbprophet.diagnostics import cross_validation, performance_metrics
+from fbprophet.plot import add_changepoints_to_plot, plot_cross_validation_metric
+
+# importing the time series dataset of bitcoin prices
+filepath = "http://www.cryptodatadownload.com/cdd/gemini_BTCUSD_day.csv"
+ssl._create_default_https_context = ssl._create_unverified_context
+df = pd.read_csv(filepath, skiprows=1)  
+df['Date']=pd.to_datetime(df['Date']) 
+
+model = Prophet()
+Date = df['Date']
+Close = df['Close']
+df_prophet = pd.DataFrame()
+df_prophet['ds'] = Date
+df_prophet['y'] = Close
+df_prophet.head(10)
+
+model.fit(df_prophet)
+future_dates = model.make_future_dataframe(periods=365);
+prediction = model.predict(future_dates)
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=df['Date'], y=df['Close'],
+                    mode='lines',
+                    name='Daily Close'))
+fig.add_trace(go.Scatter(x=prediction['ds'], y=prediction['yhat'],
+                    mode='lines',
+                    name='Prediction'))
+fig.add_trace(go.Scatter(x=prediction['ds'], y=prediction['yhat_upper'],
+                    mode='lines',
+                    name='Upper limit of predicted values'))
+fig.add_trace(go.Scatter(x=prediction['ds'], y=prediction['yhat_lower'],
+                    mode='lines',
+                    name='Lower limit of predicted values'))
+
+st.plotly_chart(fig)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 st.write("""
 # Reddit Sentiment Analysis
 """)
