@@ -119,9 +119,9 @@ df_reddit_nlp.loc[df_reddit_nlp['compound'] == 0.0, 'Sentiment'] = '0'
 # grouping post by sentiment
 df_reddit_groupby = df_reddit_nlp.groupby('Sentiment').count()
 lst1 = df_reddit_groupby['Post Titles']
-dict1 = {'Sentiment': sentiment_lst, 'Number': lst1}
+dict1 = {'Sentiment': sentiment_lst, 'Number of Posts': lst1}
 reddit_sent = pd.DataFrame(dict1)
-fig = px.bar(reddit_sent, x='Sentiment', y='Number', title='Reddit Sentiment Analysis')
+fig = px.bar(reddit_sent, x='Sentiment', y='Number of Posts', title='Reddit Sentiment Analysis')
 st.plotly_chart(fig)
 
 
@@ -191,9 +191,9 @@ df_twitter_nlp['Location'] = location
 
 df_twitter_groupby = df_twitter_nlp.groupby('Sentiment').count()
 lst2 = df_twitter_groupby['Tweets']
-dict2 = {'Sentiment': sentiment_lst, 'Number': lst2}
+dict2 = {'Sentiment': sentiment_lst, 'Number of Tweets': lst2}
 twitter_sent = pd.DataFrame(dict2)
-fig = px.bar(twitter_sent, x='Sentiment', y='Number', title='Twitter Sentiment Analysis')
+fig = px.bar(twitter_sent, x='Sentiment', y='Number of Tweets', title='Twitter Sentiment Analysis')
 st.plotly_chart(fig)
 
 
