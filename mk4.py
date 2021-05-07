@@ -12,11 +12,6 @@ from nltk.stem.porter import *
 import plotly.express as px
 import plotly.graph_objects as go
 import plotly.figure_factory as ff
-import fbprophet
-from fbprophet import Prophet
-from fbprophet.diagnostics import cross_validation, performance_metrics
-from fbprophet.plot import add_changepoints_to_plot, plot_cross_validation_metric
-import ssl
 import streamlit as st
 
 st.write("""
