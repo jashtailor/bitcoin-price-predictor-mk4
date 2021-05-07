@@ -202,6 +202,7 @@ st.plotly_chart(fig)
 
 st.write("""
 # Time Series Forecasting using FB-Prophet
+## The price of Bitcoin is in INR
 """)
 # importing the time series dataset of bitcoin prices
 tickerSymbol = 'BTC-INR'
