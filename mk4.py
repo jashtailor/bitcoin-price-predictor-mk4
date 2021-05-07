@@ -12,61 +12,15 @@ from nltk.stem.porter import *
 import plotly.express as px
 import plotly.graph_objects as go
 import plotly.figure_factory as ff
-import streamlit as st
-
-
-import ssl
 import fbprophet
 from fbprophet import Prophet
 from fbprophet.diagnostics import cross_validation, performance_metrics
 from fbprophet.plot import add_changepoints_to_plot, plot_cross_validation_metric
-
-# importing the time series dataset of bitcoin prices
-tickerSymbol = 'BTC-INR'
-tickerData = yf.Ticker(tickerSymbol)
-df = tickerData.history(period='1d', start='2010-10-08', end='2021-05-07')
-df.reset_index(inplace=True)
-
-model = Prophet()
-Date = df['Date']
-Close = df['Close']
-df_prophet = pd.DataFrame()
-df_prophet['ds'] = Date
-df_prophet['y'] = Close
-df_prophet.head(10)
-
-model.fit(df_prophet)
-future_dates = model.make_future_dataframe(periods=365);
-prediction = model.predict(future_dates)
-fig = go.Figure()
-fig.add_trace(go.Scatter(x=df['Date'], y=df['Close'],
-                    mode='lines',
-                    name='Daily Close'))
-fig.add_trace(go.Scatter(x=prediction['ds'], y=prediction['yhat'],
-                    mode='lines',
-                    name='Prediction'))
-fig.add_trace(go.Scatter(x=prediction['ds'], y=prediction['yhat_upper'],
-                    mode='lines',
-                    name='Upper limit of predicted values'))
-fig.add_trace(go.Scatter(x=prediction['ds'], y=prediction['yhat_lower'],
-                    mode='lines',
-                    name='Lower limit of predicted values'))
-
-st.plotly_chart(fig)
+import streamlit as st
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+# Reddit Sentiment Analysis 
 
 st.write("""
 # Reddit Sentiment Analysis
@@ -170,6 +124,10 @@ reddit_sent = pd.DataFrame(dict1)
 fig = px.bar(reddit_sent, x='Sentiment', y='Number', title='Reddit Sentiment Analysis')
 st.plotly_chart(fig)
 
+
+
+# Twitter Sentiment Analysis 
+
 st.write("""
 # Twitter Sentiment Analysis
 """)
@@ -237,4 +195,50 @@ dict2 = {'Sentiment': sentiment_lst, 'Number': lst2}
 twitter_sent = pd.DataFrame(dict2)
 fig = px.bar(twitter_sent, x='Sentiment', y='Number', title='Twitter Sentiment Analysis')
 st.plotly_chart(fig)
+
+
+
+# Time Series Forecasting using FB-Prophet 
+
+st.write("""
+# Time Series Forecasting using FB-Prophet
+""")
+# importing the time series dataset of bitcoin prices
+tickerSymbol = 'BTC-INR'
+tickerData = yf.Ticker(tickerSymbol)
+df = tickerData.history(period='1d', start='2010-10-08', end='2021-05-07')
+df.reset_index(inplace=True)
+
+model = Prophet()
+Date = df['Date']
+Close = df['Close']
+df_prophet = pd.DataFrame()
+df_prophet['ds'] = Date
+df_prophet['y'] = Close
+df_prophet.head(10)
+
+model.fit(df_prophet)
+future_dates = model.make_future_dataframe(periods=365);
+prediction = model.predict(future_dates)
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=df['Date'], y=df['Close'],
+                    mode='lines',
+                    name='Daily Close'))
+fig.add_trace(go.Scatter(x=prediction['ds'], y=prediction['yhat'],
+                    mode='lines',
+                    name='Prediction'))
+fig.add_trace(go.Scatter(x=prediction['ds'], y=prediction['yhat_upper'],
+                    mode='lines',
+                    name='Upper limit of predicted values'))
+fig.add_trace(go.Scatter(x=prediction['ds'], y=prediction['yhat_lower'],
+                    mode='lines',
+                    name='Lower limit of predicted values'))
+
+st.plotly_chart(fig)
+
+
+
+
+
+
 
