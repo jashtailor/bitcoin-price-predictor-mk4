@@ -22,10 +22,10 @@ from fbprophet.diagnostics import cross_validation, performance_metrics
 from fbprophet.plot import add_changepoints_to_plot, plot_cross_validation_metric
 
 # importing the time series dataset of bitcoin prices
-filepath = "http://www.cryptodatadownload.com/cdd/gemini_BTCUSD_day.csv"
-ssl._create_default_https_context = ssl._create_unverified_context
-df = pd.read_csv(filepath, skiprows=1)  
-df['Date']=pd.to_datetime(df['Date']) 
+tickerSymbol = 'BTC-INR'
+tickerData = yf.Ticker(tickerSymbol)
+df = tickerData.history(period='1d', start='2010-10-08', end='2021-05-07')
+df.reset_index(inplace=True)
 
 model = Prophet()
 Date = df['Date']
