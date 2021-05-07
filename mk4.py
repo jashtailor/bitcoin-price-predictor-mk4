@@ -15,7 +15,7 @@ import plotly.figure_factory as ff
 import streamlit as st
 
 
-import ssl
+
 import fbprophet
 from fbprophet import Prophet
 from fbprophet.diagnostics import cross_validation, performance_metrics
