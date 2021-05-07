@@ -23,7 +23,6 @@ from fbprophet.plot import add_changepoints_to_plot, plot_cross_validation_metri
 
 # importing the time series dataset of bitcoin prices
 filepath = "http://www.cryptodatadownload.com/cdd/gemini_BTCUSD_day.csv"
-ssl._create_default_https_context = ssl._create_unverified_context
 df = pd.read_csv(filepath, skiprows=1)  
 df['Date']=pd.to_datetime(df['Date']) 
 
