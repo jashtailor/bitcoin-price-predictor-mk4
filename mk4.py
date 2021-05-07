@@ -18,7 +18,7 @@ from fbprophet.diagnostics import cross_validation, performance_metrics
 from fbprophet.plot import add_changepoints_to_plot, plot_cross_validation_metric
 import ssl
 import streamlit as st
-'''
+
 st.write("""
 # Reddit Sentiment Analysis
 """)
@@ -189,57 +189,3 @@ twitter_sent = pd.DataFrame(dict2)
 fig = px.bar(twitter_sent, x='Sentiment', y='Number', title='Twitter Sentiment Analysis')
 st.plotly_chart(fig)
 
-'''
-# importing the time series dataset of bitcoin prices
-filepath = "http://www.cryptodatadownload.com/cdd/gemini_BTCUSD_day.csv"
-ssl._create_default_https_context = ssl._create_unverified_context
-df = pd.read_csv(filepath, skiprows=1)  
-df['Date']=pd.to_datetime(df['Date']) 
-model = Prophet()
-Date = df['Date']
-Close = df['Close']
-df_prophet = pd.DataFrame()
-df_prophet['ds'] = Date
-df_prophet['y'] = Close
-df_prophet.head(10)
-model.fit(df_prophet)
-future_dates = model.make_future_dataframe(periods=365);
-prediction = model.predict(future_dates)
-fig = go.Figure()
-fig.add_trace(go.Scatter(x=df['Date'], y=df['Close'],
-                    mode='lines',
-                    name='Daily Close'))
-fig.add_trace(go.Scatter(x=prediction['ds'], y=prediction['yhat'],
-                    mode='lines',
-                    name='Prediction'))
-fig.add_trace(go.Scatter(x=prediction['ds'], y=prediction['yhat_upper'],
-                    mode='lines',
-                    name='Upper limit of predicted values'))
-fig.add_trace(go.Scatter(x=prediction['ds'], y=prediction['yhat_lower'],
-                    mode='lines',
-                    name='Lower limit of predicted values'))
-
-st.plotly_chart(fig)
-
-st.write("""
-# IGNORE THIS
-""")
-'''
-
-st.write("""
-# Simple Stock Price App
-Shown are the stock closing price and volume of Google!
-""")
-
-# https://towardsdatascience.com/how-to-get-stock-data-using-python-c0de1df17e75
-#define the ticker symbol
-tickerSymbol = 'GOOGL'
-#get data on this ticker
-tickerData = yf.Ticker(tickerSymbol)
-#get the historical prices for this ticker
-tickerDf = tickerData.history(period='1d', start='2010-5-31', end='2020-5-31')
-# Open	High	Low	Close	Volume	Dividends	Stock Splits
-
-st.line_chart(tickerDf.Close)
-st.line_chart(tickerDf.Volume)
-'''
