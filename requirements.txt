@@ -7,4 +7,5 @@ nltk==3.6.1
 plotly.express==0.4.1
 pystan==2.19.1.1
 fbprophet==0.7.1
+datetime==4.3
 streamlit==0.81.0
