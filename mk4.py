@@ -16,6 +16,7 @@ import fbprophet
 from fbprophet import Prophet
 from fbprophet.diagnostics import cross_validation, performance_metrics
 from fbprophet.plot import add_changepoints_to_plot, plot_cross_validation_metric
+from datetime import datetime
 import streamlit as st
 
 '''
@@ -205,9 +206,10 @@ st.write("""
 ## The price of Bitcoin is in INR
 """)
 # importing the time series dataset of bitcoin prices
+today = date.today()
 tickerSymbol = 'BTC-INR'
 tickerData = yf.Ticker(tickerSymbol)
-df = tickerData.history(period='1d', start='2010-10-08', end='2021-05-07')
+df = tickerData.history(period='1d', start='2010-10-08', end=today)
 df.reset_index(inplace=True)
 
 model = Prophet()
@@ -234,13 +236,18 @@ fig.add_trace(go.Scatter(x=prediction['ds'], y=prediction['yhat_upper'],
 fig.add_trace(go.Scatter(x=prediction['ds'], y=prediction['yhat_lower'],
                     mode='lines',
                     name='Lower limit of predicted values'))
-
 st.plotly_chart(fig)
 
-user_input = st.text_input("label goes here")
+df_final = pd.DataFrame()
+df_final['Date'] = prediction['ds']
+df_final['Lower limit of Prediction'] = prediction['yhat_lower']
+df_final['Upper limit of Prediction'] = prediction['yhat_upper']
+df_final['Prediction'] = prediction['yhat']
 
+user_input = st.text_input("Enter Date")
+a = df_final.loc[df_final['Date'] == user_input]
 
-st.write(user_input)
+st.write(a)
 
 
 
