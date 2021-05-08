@@ -247,7 +247,7 @@ df_final['Prediction'] = prediction['yhat']
 user_input = st.text_input("Enter Date")
 a = df_final.loc[df_final['Date'] == user_input]
 
-st.write(a)
+st.write('Date:', a['Date'], '\n', 'Lower limit of Prediction', a['Lower limit of Prediction'], '\n', 'Upper limit of Prediction', a['Upper limit of Prediction'], '\n', 'Prediction', a['Prediction'])
 
 
 
