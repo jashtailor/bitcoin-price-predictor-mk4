@@ -18,7 +18,7 @@ from fbprophet.diagnostics import cross_validation, performance_metrics
 from fbprophet.plot import add_changepoints_to_plot, plot_cross_validation_metric
 import streamlit as st
 
-
+'''
 
 # Reddit Sentiment Analysis 
 
@@ -196,7 +196,7 @@ twitter_sent = pd.DataFrame(dict2)
 fig = px.bar(twitter_sent, x='Sentiment', y='Number of Tweets', title='Twitter Sentiment Analysis')
 st.plotly_chart(fig)
 
-
+'''
 
 # Time Series Forecasting using FB-Prophet 
 
@@ -237,6 +237,10 @@ fig.add_trace(go.Scatter(x=prediction['ds'], y=prediction['yhat_lower'],
 
 st.plotly_chart(fig)
 
+user_input = st.text_input("label goes here", default_value_goes_here)
+
+
+st.write(user_input)
 
 
 
