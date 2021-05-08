@@ -237,7 +237,7 @@ fig.add_trace(go.Scatter(x=prediction['ds'], y=prediction['yhat_lower'],
 
 st.plotly_chart(fig)
 
-user_input = st.text_input("label goes here", default_value_goes_here)
+user_input = st.text_input("label goes here")
 
 
 st.write(user_input)
