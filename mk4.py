@@ -16,7 +16,7 @@ import fbprophet
 from fbprophet import Prophet
 from fbprophet.diagnostics import cross_validation, performance_metrics
 from fbprophet.plot import add_changepoints_to_plot, plot_cross_validation_metric
-from datetime import datetime
+from datetime import date
 import streamlit as st
 
 '''
