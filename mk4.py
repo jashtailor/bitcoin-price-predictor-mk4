@@ -19,7 +19,7 @@ from fbprophet.plot import add_changepoints_to_plot, plot_cross_validation_metri
 from datetime import date
 import streamlit as st
 
-'''
+
 
 # Reddit Sentiment Analysis 
 
@@ -197,7 +197,7 @@ twitter_sent = pd.DataFrame(dict2)
 fig = px.bar(twitter_sent, x='Sentiment', y='Number of Tweets', title='Twitter Sentiment Analysis')
 st.plotly_chart(fig)
 
-'''
+
 
 # Time Series Forecasting using FB-Prophet 
 
@@ -247,7 +247,7 @@ df_final['Prediction'] = prediction['yhat']
 user_input = st.text_input("Enter Date")
 a = df_final.loc[df_final['Date'] == user_input]
 
-st.write('Date:', a['Date'], '\n', 'Lower limit of Prediction', a['Lower limit of Prediction'], '\n', 'Upper limit of Prediction', a['Upper limit of Prediction'], '\n', 'Prediction', a['Prediction'])
+st.write(a['Date'], '\n', a['Lower limit of Prediction'], '\n', a['Upper limit of Prediction'], '\n', a['Prediction'])
 
 
 
