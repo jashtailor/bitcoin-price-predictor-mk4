@@ -19,7 +19,9 @@ from fbprophet.plot import add_changepoints_to_plot, plot_cross_validation_metri
 from datetime import date
 import streamlit as st
 
-
+st.write("""
+## Please be patient this could take a while
+""")
 
 # Reddit Sentiment Analysis 
 
