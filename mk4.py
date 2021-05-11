@@ -246,6 +246,8 @@ df_final['Lower limit of Prediction'] = prediction['yhat_lower']
 df_final['Upper limit of Prediction'] = prediction['yhat_upper']
 df_final['Prediction'] = prediction['yhat']
 
+print(df_final.head(10))
+
 user_input = st.text_input("Enter Date")
 a = df_final.loc[df_final['Date'] == user_input]
 
