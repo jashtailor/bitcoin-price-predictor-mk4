@@ -93,8 +93,7 @@ option = st.selectbox(
 
 st.write('You selected:', option)
 if option == "Time series":
-        with st.echo():
-            time_series()
+     time_series()
 
 
 '''
