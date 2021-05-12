@@ -27,8 +27,7 @@ Your one-stop solution for prediction and forecasting of Bitcoin
 st.text('')
 st.text('')
 st.text('')
-st.text('')
-st.text('')
+
 
 
 
