@@ -85,122 +85,124 @@ def time_series():
 
 
 
+
+
+
+def reddit_SA():
+   # Reddit Sentiment Analysis 
+
+   st.write("""
+   # Reddit Sentiment Analysis
+   """)
+
+   # reddit credentials
+   reddit = pw.Reddit(client_id = 'UYBiraXAwH8bcw',
+                        client_secret = 'RMg2VFM9ncuAwLl61YB301SBfTZkUQ',
+                        user_agent = 'MyAPI/0.0.1',
+                        check_for_async=False
+                       )
+
+   # getting posts from the subreddits
+   lst_reddit = []
+   sentiment_lst = ['Negative', 'Neutral', 'Positive']
+
+   # bitcoin subreddit
+   subreddit = reddit.subreddit('bitcoin')
+   # hot posts
+   for post in subreddit.hot(limit=1000):
+     lst_reddit.append(post.title)
+   # new posts
+   for post in subreddit.new(limit=10):
+     lst_reddit.append(post.title)
+
+   # CryptoCurrency subreddit
+   subreddit = reddit.subreddit('CryptoCurrency')
+   # hot posts
+   for post in subreddit.hot(limit=1000):
+     lst_reddit.append(post.title)
+   # new posts
+   for post in subreddit.new(limit=1000):
+     lst_reddit.append(post.title)
+
+   # btc subreddit
+   subreddit = reddit.subreddit('btc')
+   # hot posts
+   for post in subreddit.hot(limit=1000):
+     lst_reddit.append(post.title)
+   # new posts
+   for post in subreddit.new(limit=1000):
+     lst_reddit.append(post.title)
+
+   # Crypto_General subreddit
+   subreddit = reddit.subreddit('Crypto_General')
+   # hot posts
+   for post in subreddit.hot(limit=1000):
+     lst_reddit.append(post.title)
+   # new posts
+   for post in subreddit.new(limit=1000):
+     lst_reddit.append(post.title)
+
+   # Coinbase subreddit
+   subreddit = reddit.subreddit('Coinbase')
+   # hot posts
+   for post in subreddit.hot(limit=1000):
+     lst_reddit.append(post.title)
+   # new posts
+   for post in subreddit.new(limit=1000):
+     lst_reddit.append(post.title)
+
+   # Binance subreddit
+   subreddit = reddit.subreddit('Binance')
+   # hot posts
+   for post in subreddit.hot(limit=1000):
+     lst_reddit.append(post.title)
+   # new posts
+   for post in subreddit.new(limit=1000):
+     lst_reddit.append(post.title)
+
+
+   # converting the list into a dataframe and displaying it 
+   df_reddit = pd.DataFrame(lst_reddit, columns=['Post Titles'])
+
+   # classifying the post as positive, negative or neutral and displaying the results
+   sia = SIA()
+   results = []
+   for line in lst_reddit:
+     pol_score = sia.polarity_scores(line)
+     pol_score['Post Titles'] = line
+     results.append(pol_score)
+
+   df_reddit_nlp = pd.DataFrame(results)
+
+   # compound is taken as the deciding factor is classifying the sentiment
+
+   # positive
+   df_reddit_nlp.loc[df_reddit_nlp['compound'] > 0, 'Sentiment'] = '1'
+
+   # negative
+   df_reddit_nlp.loc[df_reddit_nlp['compound'] < 0, 'Sentiment'] = '-1'
+
+   # neutral
+   df_reddit_nlp.loc[df_reddit_nlp['compound'] == 0.0, 'Sentiment'] = '0'
+
+   # grouping post by sentiment
+   df_reddit_groupby = df_reddit_nlp.groupby('Sentiment').count()
+   lst1 = df_reddit_groupby['Post Titles']
+   dict1 = {'Sentiment': sentiment_lst, 'Number of Posts': lst1}
+   reddit_sent = pd.DataFrame(dict1)
+   fig = px.bar(reddit_sent, x='Sentiment', y='Number of Posts', title='Reddit Sentiment Analysis')
+   st.plotly_chart(fig)
+
 option = st.selectbox(
      'How would you like to be contacted?',
-     ('None', 'Time series', 'Home phone', 'Mobile phone'))
+     ('None', 'Reddit Sentiment Analysis', 'Time series', 'Home phone', 'Mobile phone'))
 
 st.write('You selected:', option)
-if option == "Time series":
-     time_series()
-
-
-
-
-# Reddit Sentiment Analysis 
-
-st.write("""
-# Reddit Sentiment Analysis
-""")
-
-# reddit credentials
-reddit = pw.Reddit(client_id = 'UYBiraXAwH8bcw',
-                     client_secret = 'RMg2VFM9ncuAwLl61YB301SBfTZkUQ',
-                     user_agent = 'MyAPI/0.0.1',
-                     check_for_async=False
-                    )
-
-# getting posts from the subreddits
-lst_reddit = []
-sentiment_lst = ['Negative', 'Neutral', 'Positive']
-
-# bitcoin subreddit
-subreddit = reddit.subreddit('bitcoin')
-# hot posts
-for post in subreddit.hot(limit=1000):
-  lst_reddit.append(post.title)
-# new posts
-for post in subreddit.new(limit=10):
-  lst_reddit.append(post.title)
-
-# CryptoCurrency subreddit
-subreddit = reddit.subreddit('CryptoCurrency')
-# hot posts
-for post in subreddit.hot(limit=1000):
-  lst_reddit.append(post.title)
-# new posts
-for post in subreddit.new(limit=1000):
-  lst_reddit.append(post.title)
-
-# btc subreddit
-subreddit = reddit.subreddit('btc')
-# hot posts
-for post in subreddit.hot(limit=1000):
-  lst_reddit.append(post.title)
-# new posts
-for post in subreddit.new(limit=1000):
-  lst_reddit.append(post.title)
-
-# Crypto_General subreddit
-subreddit = reddit.subreddit('Crypto_General')
-# hot posts
-for post in subreddit.hot(limit=1000):
-  lst_reddit.append(post.title)
-# new posts
-for post in subreddit.new(limit=1000):
-  lst_reddit.append(post.title)
-
-# Coinbase subreddit
-subreddit = reddit.subreddit('Coinbase')
-# hot posts
-for post in subreddit.hot(limit=1000):
-  lst_reddit.append(post.title)
-# new posts
-for post in subreddit.new(limit=1000):
-  lst_reddit.append(post.title)
-
-# Binance subreddit
-subreddit = reddit.subreddit('Binance')
-# hot posts
-for post in subreddit.hot(limit=1000):
-  lst_reddit.append(post.title)
-# new posts
-for post in subreddit.new(limit=1000):
-  lst_reddit.append(post.title)
-
- 
-# converting the list into a dataframe and displaying it 
-df_reddit = pd.DataFrame(lst_reddit, columns=['Post Titles'])
-
-# classifying the post as positive, negative or neutral and displaying the results
-sia = SIA()
-results = []
-for line in lst_reddit:
-  pol_score = sia.polarity_scores(line)
-  pol_score['Post Titles'] = line
-  results.append(pol_score)
-
-df_reddit_nlp = pd.DataFrame(results)
-
-# compound is taken as the deciding factor is classifying the sentiment
-
-# positive
-df_reddit_nlp.loc[df_reddit_nlp['compound'] > 0, 'Sentiment'] = '1'
-
-# negative
-df_reddit_nlp.loc[df_reddit_nlp['compound'] < 0, 'Sentiment'] = '-1'
-
-# neutral
-df_reddit_nlp.loc[df_reddit_nlp['compound'] == 0.0, 'Sentiment'] = '0'
-
-# grouping post by sentiment
-df_reddit_groupby = df_reddit_nlp.groupby('Sentiment').count()
-lst1 = df_reddit_groupby['Post Titles']
-dict1 = {'Sentiment': sentiment_lst, 'Number of Posts': lst1}
-reddit_sent = pd.DataFrame(dict1)
-fig = px.bar(reddit_sent, x='Sentiment', y='Number of Posts', title='Reddit Sentiment Analysis')
-st.plotly_chart(fig)
-
-
+if option == 'Time series':
+   time_series()
+elif option == 'Reddit Sentiment Analysis':
+   reddit_SA()
+   
 '''
 # Twitter Sentiment Analysis 
 
