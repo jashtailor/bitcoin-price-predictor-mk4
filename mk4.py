@@ -117,10 +117,11 @@ def reddit_SA():
    # hot posts
    for post in subreddit.hot(limit=1000):
      lst_reddit.append(post.title)
-   # new posts
-   for post in subreddit.new(limit=10):
-     lst_reddit.append(post.title)
    '''
+   # new posts
+   for post in subreddit.new(limit=1000):
+     lst_reddit.append(post.title)
+   
    # CryptoCurrency subreddit
    subreddit = reddit.subreddit('CryptoCurrency')
    # hot posts
@@ -200,7 +201,7 @@ def reddit_SA():
    st.plotly_chart(fig)
    if lst1[0] > lst1[2]:
       st.write('Sentiment is Negative')
-   elif ls1[0] < lst1[2]:
+   elif lst1[0] < lst1[2]:
       st.write('Sentiment is Postive')
    
 
