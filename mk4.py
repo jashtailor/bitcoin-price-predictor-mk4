@@ -32,6 +32,10 @@ st.text('')
 
 
 def time_series():
+     
+     st.text('')
+     st.text('')
+     st.text('')
    
      st.write("""
      Please be patient this could take a while
@@ -90,6 +94,10 @@ def time_series():
      st.write(a['Date'], '\n', a['Lower limit of Prediction'], '\n', a['Upper limit of Prediction'], '\n', a['Prediction'])
 
 def reddit_SA():
+   
+   st.text('')
+   st.text('')
+   st.text('')
    
    st.write("""
    Please be patient this could take a while
@@ -207,6 +215,10 @@ def reddit_SA():
 
 
 def twitter_SA():
+   
+   st.text('')
+   st.text('')
+   st.text('')
    
    st.write("""
    Please be patient this could take a while
