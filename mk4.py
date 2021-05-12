@@ -89,7 +89,7 @@ def time_series():
 
 option = st.selectbox(
      'How would you like to be contacted?',
-     ('Time series', 'Home phone', 'Mobile phone'))
+     ('None', 'Time series', 'Home phone', 'Mobile phone'))
 
 st.write('You selected:', option)
 if option == "Time series":
