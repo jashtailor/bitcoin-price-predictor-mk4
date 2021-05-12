@@ -28,15 +28,11 @@ st.text('')
 st.text('')
 st.text('')
 
-
-
-
 def time_series():
      
      st.text('')
      st.text('')
      
-   
      st.write("""
      Please be patient this could take a while
      """)
@@ -100,12 +96,13 @@ def reddit_SA():
    
    st.text('')
    st.text('')
-   st.text('')
    
    st.write("""
    Please be patient this could take a while
    """)
-     
+ 
+   st.text('')
+   st.text('')
    
    # Reddit Sentiment Analysis 
 
@@ -215,18 +212,17 @@ def reddit_SA():
    elif lst1[0] < lst1[2]:
       st.write('Sentiment is Postive')
    
-
-
 def twitter_SA():
    
-   st.text('')
    st.text('')
    st.text('')
    
    st.write("""
    Please be patient this could take a while
    """)
-     
+   
+   st.text('')
+   st.text('')
    
    # Twitter Sentiment Analysis 
 
@@ -302,6 +298,8 @@ def twitter_SA():
    elif lst2[0] < lst2[2]:
       st.write('Sentiment is Postive')
 
+
+# dropdown menu 
 option = st.selectbox(
      'Please select your desired algorithm',
      ('None', 'Reddit Sentiment Analysis', 'Twitter Sentiment Analysis', 'Time series'))
