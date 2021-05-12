@@ -23,14 +23,7 @@ st.write("""
 ## Please be patient this could take a while
 """)
 
-option = st.selectbox(
-     'How would you like to be contacted?',
-     ('Time series', 'Home phone', 'Mobile phone'))
 
-st.write('You selected:', option)
-if option == "Time series":
-        with st.echo():
-            time_series()
 
 
 
@@ -94,7 +87,14 @@ def time_series():
 
 
 
+option = st.selectbox(
+     'How would you like to be contacted?',
+     ('Time series', 'Home phone', 'Mobile phone'))
 
+st.write('You selected:', option)
+if option == "Time series":
+        with st.echo():
+            time_series()
 
 
 '''
