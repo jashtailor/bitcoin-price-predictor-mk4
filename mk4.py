@@ -25,10 +25,72 @@ st.write("""
 
 option = st.selectbox(
      'How would you like to be contacted?',
-     ('Email', 'Home phone', 'Mobile phone'))
+     ('Time series', 'Home phone', 'Mobile phone'))
 
 st.write('You selected:', option)
+if option == "Time series":
+        with st.echo():
+            time_series()
 
+
+
+
+
+def time_series():
+     
+
+
+     # Time Series Forecasting using FB-Prophet 
+
+     st.write("""
+     # Time Series Forecasting using FB-Prophet
+     ## The price of Bitcoin is in INR
+     """)
+     # importing the time series dataset of bitcoin prices
+     today = date.today()
+     tickerSymbol = 'BTC-INR'
+     tickerData = yf.Ticker(tickerSymbol)
+     df = tickerData.history(period='1d', start='2010-10-08', end=today)
+     df.reset_index(inplace=True)
+
+     model = Prophet()
+     Date = df['Date']
+     Close = df['Close']
+     df_prophet = pd.DataFrame()
+     df_prophet['ds'] = Date
+     df_prophet['y'] = Close
+     df_prophet.head(10)
+
+     model.fit(df_prophet)
+     future_dates = model.make_future_dataframe(periods=365);
+     prediction = model.predict(future_dates)
+     fig = go.Figure()
+     fig.add_trace(go.Scatter(x=df['Date'], y=df['Close'],
+                         mode='lines',
+                         name='Daily Close'))
+     fig.add_trace(go.Scatter(x=prediction['ds'], y=prediction['yhat'],
+                         mode='lines',
+                         name='Prediction'))
+     fig.add_trace(go.Scatter(x=prediction['ds'], y=prediction['yhat_upper'],
+                         mode='lines',
+                         name='Upper limit of predicted values'))
+     fig.add_trace(go.Scatter(x=prediction['ds'], y=prediction['yhat_lower'],
+                         mode='lines',
+                         name='Lower limit of predicted values'))
+     st.plotly_chart(fig)
+
+     df_final = pd.DataFrame()
+     df_final['Date'] = prediction['ds']
+     df_final['Lower limit of Prediction'] = prediction['yhat_lower']
+     df_final['Upper limit of Prediction'] = prediction['yhat_upper']
+     df_final['Prediction'] = prediction['yhat']
+
+     print(df_final.head(10))
+
+     user_input = st.text_input("Enter Date")
+     a = df_final.loc[df_final['Date'] == user_input]
+
+     st.write(a['Date'], '\n', a['Lower limit of Prediction'], '\n', a['Upper limit of Prediction'], '\n', a['Prediction'])
 
 
 
@@ -36,64 +98,6 @@ st.write('You selected:', option)
 
 
 '''
-# Time Series Forecasting using FB-Prophet 
-
-st.write("""
-# Time Series Forecasting using FB-Prophet
-## The price of Bitcoin is in INR
-""")
-# importing the time series dataset of bitcoin prices
-today = date.today()
-tickerSymbol = 'BTC-INR'
-tickerData = yf.Ticker(tickerSymbol)
-df = tickerData.history(period='1d', start='2010-10-08', end=today)
-df.reset_index(inplace=True)
-
-model = Prophet()
-Date = df['Date']
-Close = df['Close']
-df_prophet = pd.DataFrame()
-df_prophet['ds'] = Date
-df_prophet['y'] = Close
-df_prophet.head(10)
-
-model.fit(df_prophet)
-future_dates = model.make_future_dataframe(periods=365);
-prediction = model.predict(future_dates)
-fig = go.Figure()
-fig.add_trace(go.Scatter(x=df['Date'], y=df['Close'],
-                    mode='lines',
-                    name='Daily Close'))
-fig.add_trace(go.Scatter(x=prediction['ds'], y=prediction['yhat'],
-                    mode='lines',
-                    name='Prediction'))
-fig.add_trace(go.Scatter(x=prediction['ds'], y=prediction['yhat_upper'],
-                    mode='lines',
-                    name='Upper limit of predicted values'))
-fig.add_trace(go.Scatter(x=prediction['ds'], y=prediction['yhat_lower'],
-                    mode='lines',
-                    name='Lower limit of predicted values'))
-st.plotly_chart(fig)
-
-df_final = pd.DataFrame()
-df_final['Date'] = prediction['ds']
-df_final['Lower limit of Prediction'] = prediction['yhat_lower']
-df_final['Upper limit of Prediction'] = prediction['yhat_upper']
-df_final['Prediction'] = prediction['yhat']
-
-print(df_final.head(10))
-
-user_input = st.text_input("Enter Date")
-a = df_final.loc[df_final['Date'] == user_input]
-
-st.write(a['Date'], '\n', a['Lower limit of Prediction'], '\n', a['Upper limit of Prediction'], '\n', a['Prediction'])
-
-
-
-
-
-
-
 
 # Reddit Sentiment Analysis 
 
