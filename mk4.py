@@ -196,10 +196,12 @@ def reddit_SA():
    lst1 = df_reddit_groupby['Post Titles']
    dict1 = {'Sentiment': sentiment_lst, 'Number of Posts': lst1}
    reddit_sent = pd.DataFrame(dict1)
-   
-   st.write(lst1, type(lst1), lst1[0], lst1[2])
    fig = px.bar(reddit_sent, x='Sentiment', y='Number of Posts', title='Reddit Sentiment Analysis')
    st.plotly_chart(fig)
+   if lst1[0] > lst1[2]:
+      st.write('Sentiment is Negative')
+   elif ls1[0] < lst1[2]:
+      st.write('Sentiment is Postive')
    
 
 
