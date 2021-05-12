@@ -57,6 +57,9 @@ count_2 = df.query(f"Hospital=='{hosp_list}' & document_source=='{doc_source}'")
 st.markdown(f"<span style='color: blue;font-size: 24px;font-weight: bold;'>{count}</span>", unsafe_allow_html=True)
 st.markdown(f"<span style='color: blue;font-size: 24px;font-weight: bold;'>{count_2}</span>", unsafe_allow_html=True)
 
+
+
+'''
 # Time Series Forecasting using FB-Prophet 
 
 st.write("""
@@ -291,8 +294,7 @@ dict2 = {'Sentiment': sentiment_lst, 'Number of Tweets': lst2}
 twitter_sent = pd.DataFrame(dict2)
 fig = px.bar(twitter_sent, x='Sentiment', y='Number of Tweets', title='Twitter Sentiment Analysis')
 st.plotly_chart(fig)
-
-
+'''
 
 
 
