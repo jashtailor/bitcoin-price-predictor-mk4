@@ -21,7 +21,8 @@ import streamlit as st
 
 st.write("""
 # Staver
-## Your one-stop solution for prediction and forecasting of Bitcoin 
+Your one-stop solution for prediction and forecasting of Bitcoin 
+\n\n
 """)
 
 
@@ -33,14 +34,14 @@ st.write("""
 def time_series():
    
      st.write("""
-     ## Please be patient this could take a while
+     Please be patient this could take a while
      """)
      
      # Time Series Forecasting using FB-Prophet 
 
      st.write("""
-     # Time Series Forecasting using FB-Prophet
-     ## The price of Bitcoin is in INR
+     ## Time Series Forecasting using FB-Prophet
+     The price of Bitcoin is in INR
      """)
      # importing the time series dataset of bitcoin prices
      today = date.today()
@@ -91,14 +92,14 @@ def time_series():
 def reddit_SA():
    
    st.write("""
-   ## Please be patient this could take a while
+   Please be patient this could take a while
    """)
      
    
    # Reddit Sentiment Analysis 
 
    st.write("""
-   # Reddit Sentiment Analysis
+   ## Reddit Sentiment Analysis
    """)
 
    # reddit credentials
@@ -117,7 +118,6 @@ def reddit_SA():
    # hot posts
    for post in subreddit.hot(limit=1000):
      lst_reddit.append(post.title)
-   '''
    # new posts
    for post in subreddit.new(limit=1000):
      lst_reddit.append(post.title)
@@ -167,7 +167,7 @@ def reddit_SA():
    for post in subreddit.new(limit=1000):
      lst_reddit.append(post.title)
 
-   '''
+   
    # converting the list into a dataframe and displaying it 
    df_reddit = pd.DataFrame(lst_reddit, columns=['Post Titles'])
 
@@ -209,14 +209,14 @@ def reddit_SA():
 def twitter_SA():
    
    st.write("""
-   ## Please be patient this could take a while
+   Please be patient this could take a while
    """)
      
    
    # Twitter Sentiment Analysis 
 
    st.write("""
-   # Twitter Sentiment Analysis
+   ## Twitter Sentiment Analysis
    """)
 
    # twitter credentials
@@ -282,12 +282,15 @@ def twitter_SA():
    twitter_sent = pd.DataFrame(dict2)
    fig = px.bar(twitter_sent, x='Sentiment', y='Number of Tweets', title='Twitter Sentiment Analysis')
    st.plotly_chart(fig)
+   if lst2[0] > lst2[2]:
+      st.write('Sentiment is Negative')
+   elif lst2[0] < lst2[2]:
+      st.write('Sentiment is Postive')
 
 option = st.selectbox(
      'Please select your desired algorithm',
      ('None', 'Reddit Sentiment Analysis', 'Twitter Sentiment Analysis', 'Time series'))
 
-st.write('You selected:', option)
 if option == 'Time series':
    time_series()
 elif option == 'Reddit Sentiment Analysis':
