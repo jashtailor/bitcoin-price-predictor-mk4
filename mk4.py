@@ -30,9 +30,7 @@ st.write("""
 
 
 def time_series():
-     
-
-
+   
      # Time Series Forecasting using FB-Prophet 
 
      st.write("""
@@ -96,7 +94,7 @@ if option == "Time series":
      time_series()
 
 
-'''
+
 
 # Reddit Sentiment Analysis 
 
@@ -203,7 +201,7 @@ fig = px.bar(reddit_sent, x='Sentiment', y='Number of Posts', title='Reddit Sent
 st.plotly_chart(fig)
 
 
-
+'''
 # Twitter Sentiment Analysis 
 
 st.write("""
