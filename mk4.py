@@ -23,6 +23,12 @@ st.write("""
 ## Please be patient this could take a while
 """)
 
+option = st.selectbox(
+     'How would you like to be contacted?',
+     ('Email', 'Home phone', 'Mobile phone'))
+
+st.write('You selected:', option)
+
 # Time Series Forecasting using FB-Prophet 
 
 st.write("""
