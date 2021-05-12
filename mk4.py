@@ -34,11 +34,15 @@ st.text('')
 def time_series():
      
      st.text('')
+     st.text('')
      
    
      st.write("""
      Please be patient this could take a while
      """)
+     
+     st.text('')
+     st.text('')
      
      # Time Series Forecasting using FB-Prophet 
 
