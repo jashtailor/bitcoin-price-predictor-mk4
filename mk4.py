@@ -22,12 +22,13 @@ import streamlit as st
 st.write("""
 # Staver
 Your one-stop solution for prediction and forecasting of Bitcoin 
-\n\n
 """)
 
-
-
-
+st.text('')
+st.text('')
+st.text('')
+st.text('')
+st.text('')
 
 
 
