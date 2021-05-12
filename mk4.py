@@ -120,7 +120,7 @@ def reddit_SA():
    # new posts
    for post in subreddit.new(limit=10):
      lst_reddit.append(post.title)
-
+   '''
    # CryptoCurrency subreddit
    subreddit = reddit.subreddit('CryptoCurrency')
    # hot posts
@@ -166,7 +166,7 @@ def reddit_SA():
    for post in subreddit.new(limit=1000):
      lst_reddit.append(post.title)
 
-
+   '''
    # converting the list into a dataframe and displaying it 
    df_reddit = pd.DataFrame(lst_reddit, columns=['Post Titles'])
 
