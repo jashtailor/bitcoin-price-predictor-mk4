@@ -34,8 +34,7 @@ st.text('')
 def time_series():
      
      st.text('')
-     st.text('')
-     st.text('')
+     
    
      st.write("""
      Please be patient this could take a while
