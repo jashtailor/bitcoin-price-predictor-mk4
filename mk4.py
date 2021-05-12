@@ -198,6 +198,7 @@ def reddit_SA():
    reddit_sent = pd.DataFrame(dict1)
    fig = px.bar(reddit_sent, x='Sentiment', y='Number of Posts', title='Reddit Sentiment Analysis')
    st.plotly_chart(fig)
+   print(lst1, dict1, reddit_sent)
 
 
 def twitter_SA():
