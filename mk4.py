@@ -292,6 +292,7 @@ def twitter_SA():
    sentiment_lst = ['Negative', 'Neutral', 'Positive']
    dict2 = {'Sentiment': sentiment_lst, 'Number of Tweets': lst2}
    twitter_sent = pd.DataFrame(dict2)
+   st.write(lst2, sentiment_lst, dict2, twitter_sent)
    fig = px.bar(twitter_sent, x='Sentiment', y='Number of Tweets', title='Twitter Sentiment Analysis')
    st.plotly_chart(fig)
    if lst2[0] > lst2[2]:
