@@ -92,7 +92,7 @@ def time_series():
 
      st.write(a['Date'], '\n', a['Lower limit of Prediction'], '\n', a['Upper limit of Prediction'], '\n', a['Prediction'])
 
-def reddit_SA():
+def sentiment_analysis():
    
    st.text('')
    st.text('')
@@ -212,15 +212,6 @@ def reddit_SA():
    elif lst1[0] < lst1[2]:
       st.write('Sentiment is Postive')
    
-def twitter_SA():
-   
-   st.text('')
-   st.text('')
-   
-   st.write("""
-   Please be patient this could take a while as the data is being fetched and processed in real-time
-   """)
-   
    st.text('')
    st.text('')
    
@@ -289,7 +280,6 @@ def twitter_SA():
 
    df_twitter_groupby = df_twitter_nlp.groupby('Sentiment').count()
    lst2 = df_twitter_groupby['Tweets']
-   sentiment_lst = ['Negative', 'Neutral', 'Positive']
    dict2 = {'Sentiment': sentiment_lst, 'Number of Tweets': lst2}
    twitter_sent = pd.DataFrame(dict2)
    fig = px.bar(twitter_sent, x='Sentiment', y='Number of Tweets', title='Twitter Sentiment Analysis')
@@ -299,17 +289,15 @@ def twitter_SA():
    elif lst2[0] < lst2[2]:
       st.write('Sentiment is Postive')
 
-
 # dropdown menu 
 option = st.selectbox(
      'Please select your preferred method',
-     ('None', 'Reddit Sentiment Analysis', 'Twitter Sentiment Analysis', 'Time series'))
+     ('None', 'Sentiment Analysis', 'Time series'))
 
 if option == 'Time series':
    time_series()
-elif option == 'Reddit Sentiment Analysis':
-   reddit_SA()
-elif option == 'Twitter Sentiment Analysis':
-   twitter_SA()
+elif option == 'Sentiment Analysis':
+   sentiment_analysis()
+
 
 
