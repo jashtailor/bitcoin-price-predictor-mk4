@@ -34,7 +34,7 @@ def time_series():
      st.text('')
      
      st.write("""
-     Please be patient this could take a while
+     Please be patient this could take a while as the data is being fetched and processed in real-time
      """)
      
      st.text('')
@@ -98,7 +98,7 @@ def reddit_SA():
    st.text('')
    
    st.write("""
-   Please be patient this could take a while
+   Please be patient this could take a while as the data is being fetched and processed in real-time
    """)
  
    st.text('')
@@ -218,7 +218,7 @@ def twitter_SA():
    st.text('')
    
    st.write("""
-   Please be patient this could take a while
+   Please be patient this could take a while as the data is being fetched and processed in real-time
    """)
    
    st.text('')
