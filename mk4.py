@@ -210,7 +210,7 @@ def sentiment_analysis():
    if lst1[0] > lst1[2]:
       st.write('## Sentiment is Negative')
    elif lst1[0] < lst1[2]:
-      st.write('## Sentiment is Postive')
+      st.write('## Sentiment is Positive')
    
    st.text('')
    st.text('')
@@ -287,7 +287,7 @@ def sentiment_analysis():
    if lst2[0] > lst2[2]:
       st.write('## Sentiment is Negative')
    elif lst2[0] < lst2[2]:
-      st.write('## Sentiment is Postive')
+      st.write('## Sentiment is Positive')
 
 # dropdown menu 
 option = st.selectbox(
