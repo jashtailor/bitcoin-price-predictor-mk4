@@ -301,7 +301,7 @@ def twitter_SA():
 
 # dropdown menu 
 option = st.selectbox(
-     'Please select your desired algorithm',
+     'Please select your preferred method',
      ('None', 'Reddit Sentiment Analysis', 'Twitter Sentiment Analysis', 'Time series'))
 
 if option == 'Time series':
