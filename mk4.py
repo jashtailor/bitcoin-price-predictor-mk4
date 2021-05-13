@@ -244,6 +244,7 @@ def twitter_SA():
    tweet_text = []
    date_time = []
    location = []
+   sentiment_lst = ['Negative', 'Neutral', 'Positive']
 
    # extracting tweet text, datetime and location
    for words in search_words:
