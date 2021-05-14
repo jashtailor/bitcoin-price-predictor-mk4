@@ -284,6 +284,7 @@ def twitter_SA():
 
    df_twitter_groupby = df_twitter_nlp.groupby('Sentiment').count()
    lst2 = df_twitter_groupby['Tweets']
+   sentiment_lst = ['Negative', 'Neutral', 'Positive']
    dict2 = {'Sentiment': sentiment_lst, 'Number of Tweets': lst2}
    twitter_sent = pd.DataFrame(dict2)
    fig = px.bar(twitter_sent, x='Sentiment', y='Number of Tweets')
