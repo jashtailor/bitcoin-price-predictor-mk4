@@ -93,6 +93,7 @@ def time_series():
      st.write(a['Date'], '\n', a['Lower limit of Prediction'], '\n', a['Upper limit of Prediction'], '\n', a['Prediction'])
 
 def sentiment_analysis():
+   sentiment_lst = ['Negative', 'Neutral', 'Positive']
    '''
    st.text('')
    st.text('')
