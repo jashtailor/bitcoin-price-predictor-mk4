@@ -230,7 +230,7 @@ def sentiment_analysis():
    auth.set_access_token(access_token, access_token_secret)
    api = tw.API(auth, wait_on_rate_limit=True)
 
-   search_words = ['crypto', 'bitcoin']
+   search_words = ['#crypto', '#bitcoin', '#cryptocurrency']
    date_since = '2021-04-20'
    tweet_text = []
    date_time = []
