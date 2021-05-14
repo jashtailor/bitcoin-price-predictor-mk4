@@ -245,7 +245,7 @@ def twitter_SA():
      tweets = tw.Cursor(api.search,
                  q=search_words,
                  lang="en",
-                 since=date_since).items(1000)
+                 since=date_since).items(100)
      for tweet in tweets:
        str1 = tweet.text
        str2 = tweet.created_at
