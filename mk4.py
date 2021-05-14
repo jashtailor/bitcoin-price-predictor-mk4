@@ -241,6 +241,7 @@ def twitter_SA():
    
    # extracting tweet text, datetime and location
    for words in search_words:
+     st.write(words)
      tweets = tw.Cursor(api.search,
                  q=search_words,
                  lang="en",
@@ -264,7 +265,7 @@ def twitter_SA():
      pol_score = sia.polarity_scores(line)
      pol_score['Tweets'] = line
      results.append(pol_score)
-
+   st.write(results)
    df_twitter_nlp = pd.DataFrame(results)
 
    # compound is taken as the deciding factor is classifying the sentiment
