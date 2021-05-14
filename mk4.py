@@ -93,8 +93,7 @@ def time_series():
      st.write(a['Date'], '\n', a['Lower limit of Prediction'], '\n', a['Upper limit of Prediction'], '\n', a['Prediction'])
 
 def sentiment_analysis():
-   sentiment_lst = ['Negative', 'Neutral', 'Positive']
-   '''
+   
    st.text('')
    st.text('')
    
@@ -215,7 +214,7 @@ def sentiment_analysis():
    
    st.text('')
    st.text('')
-   '''
+   
    # Twitter Sentiment Analysis 
 
    st.write("""
@@ -231,7 +230,7 @@ def sentiment_analysis():
    auth.set_access_token(access_token, access_token_secret)
    api = tw.API(auth, wait_on_rate_limit=True)
 
-   search_words = ['crypto', 'bitcoin', 'cryptocurrency']
+   search_words = ['crypto', 'bitcoin']
    date_since = '2021-04-20'
    tweet_text = []
    date_time = []
