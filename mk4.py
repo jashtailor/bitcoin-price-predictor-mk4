@@ -44,7 +44,6 @@ def time_series():
 
      st.write("""
      ## Time Series Forecasting using FB-Prophet
-     The forecasted price of Bitcoin is in INR
      """)
      # importing the time series dataset of bitcoin prices
      today = date.today()
@@ -52,6 +51,17 @@ def time_series():
      tickerData = yf.Ticker(tickerSymbol)
      df = tickerData.history(period='1d', start='2010-10-08', end=today)
      df.reset_index(inplace=True)
+     
+     fig = go.Figure(data=go.Ohlc(x=df['Date'],
+                    open=df['Open'],
+                    high=df['High'],
+                    low=df['Low'],
+                    close=df['Close']))
+     st.plotly_chart(fig)
+     
+     st.write("""
+     The forecasted price of Bitcoin is in INR
+     """)
 
      model = Prophet()
      Date = df['Date']
