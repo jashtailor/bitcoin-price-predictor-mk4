@@ -67,7 +67,7 @@ def time_series():
      st.plotly_chart(fig)
      
      st.write("""
-     The forecasted price of Bitcoin is in INR
+     The forecasted price of Bitcoin
      """)
 
      model = Prophet()
