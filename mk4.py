@@ -212,9 +212,6 @@ def sentiment_analysis():
    elif lst1[0] < lst1[2]:
       st.write('## Sentiment is Positive')
    
-def twitter_SA():
-     
-
    st.text('')
    st.text('')
    
@@ -294,17 +291,20 @@ def twitter_SA():
    elif lst2[0] < lst2[2]:
       st.write('## Sentiment is Positive')
 
+
+     
+
+   
 # dropdown menu 
 option = st.selectbox(
      'Please select your preferred method',
-     ('None', 'Reddit Sentiment Analysis', 'Twitter Sentiment Analysis', 'Time series'))
+     ('None', 'Sentiment Analysis', 'Time series'))
 
 if option == 'Time series':
    time_series()
-elif option == 'Reddit Sentiment Analysis':
+elif option == 'Sentiment Analysis':
    sentiment_analysis()
-elif option == 'Twitter Sentiment Analysis':
-     twitter_SA()
+
 
 
 
