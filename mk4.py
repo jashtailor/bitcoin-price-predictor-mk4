@@ -56,7 +56,7 @@ def time_series():
      df = tickerData.history(period='1d', start='2010-10-08', end=today)
      df.reset_index(inplace=True)
      
-     st.text("""
+     st.write("""
      Ticker chart of BTC-INR
      """)
      fig = go.Figure(data=go.Ohlc(x=df['Date'],
