@@ -45,6 +45,10 @@ def time_series():
      st.write("""
      ## Time Series Forecasting using FB-Prophet
      """)
+     
+     st.text('')
+     st.text('')
+     
      # importing the time series dataset of bitcoin prices
      today = date.today()
      tickerSymbol = 'BTC-INR'
@@ -52,6 +56,7 @@ def time_series():
      df = tickerData.history(period='1d', start='2010-10-08', end=today)
      df.reset_index(inplace=True)
      
+     st.text('Ticker chart of BTC-INR')
      fig = go.Figure(data=go.Ohlc(x=df['Date'],
                     open=df['Open'],
                     high=df['High'],
