@@ -67,7 +67,7 @@ def time_series():
      st.plotly_chart(fig)
      
      st.write("""
-     The forecasted price of Bitcoin
+     The forecasted price of Bitcoin in INR
      """)
 
      model = Prophet()
@@ -108,6 +108,39 @@ def time_series():
      a = df_final.loc[df_final['Date'] == user_input]
 
      st.write(a['Date'], '\n', a['Lower limit of Prediction'], '\n', a['Upper limit of Prediction'], '\n', a['Prediction'])
+     
+     tickerSymbol = 'BTC-USD'
+     tickerData = yf.Ticker(tickerSymbol)
+     df_btc_usd = tickerData.history(period='1d', start='2010-10-08', end=today)
+     df_btc_usd.reset_index(inplace=True)
+     
+     model = Prophet()
+     Date = df_btc_usd['Date']
+     Close = df_btc_usd['Close']
+     df_prophet_usd = pd.DataFrame()
+     df_prophet_usd['ds'] = Date
+     df_prophet_usd['y'] = Close
+     
+
+     model.fit(df_prophet_usd)
+     future_dates = model.make_future_dataframe(periods=365);
+     prediction_usd = model.predict(future_dates)
+     fig = go.Figure()
+     fig.add_trace(go.Scatter(x=df_btc_usd['Date'], y=df_btc_usd['Close'],
+                         mode='lines',
+                         name='Daily Close'))
+     fig.add_trace(go.Scatter(x=prediction_usd['ds'], y=prediction_usd['yhat'],
+                         mode='lines',
+                         name='Prediction'))
+     fig.add_trace(go.Scatter(x=prediction_usd['ds'], y=prediction_usd['yhat_upper'],
+                         mode='lines',
+                         name='Upper limit of predicted values'))
+     fig.add_trace(go.Scatter(x=prediction_usd['ds'], y=prediction_usd['yhat_lower'],
+                         mode='lines',
+                         name='Lower limit of predicted values'))
+     st.plotly_chart(fig)
+
+
      
      
 def sentiment_analysis():
