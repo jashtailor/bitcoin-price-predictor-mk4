@@ -148,55 +148,55 @@ def sentiment_analysis():
    # bitcoin subreddit
    subreddit = reddit.subreddit('bitcoin')
    # hot posts
-   for post in subreddit.hot(limit=1000):
+   for post in subreddit.hot(limit=500):
      lst_reddit.append(post.title)
    # new posts
-   for post in subreddit.new(limit=1000):
+   for post in subreddit.new(limit=500):
      lst_reddit.append(post.title)
    
    # CryptoCurrency subreddit
    subreddit = reddit.subreddit('CryptoCurrency')
    # hot posts
-   for post in subreddit.hot(limit=1000):
+   for post in subreddit.hot(limit=500):
      lst_reddit.append(post.title)
    # new posts
-   for post in subreddit.new(limit=1000):
+   for post in subreddit.new(limit=500):
      lst_reddit.append(post.title)
 
    # btc subreddit
    subreddit = reddit.subreddit('btc')
    # hot posts
-   for post in subreddit.hot(limit=1000):
+   for post in subreddit.hot(limit=500):
      lst_reddit.append(post.title)
    # new posts
-   for post in subreddit.new(limit=1000):
+   for post in subreddit.new(limit=500):
      lst_reddit.append(post.title)
 
    # Crypto_General subreddit
    subreddit = reddit.subreddit('Crypto_General')
    # hot posts
-   for post in subreddit.hot(limit=1000):
+   for post in subreddit.hot(limit=500):
      lst_reddit.append(post.title)
    # new posts
-   for post in subreddit.new(limit=1000):
+   for post in subreddit.new(limit=500):
      lst_reddit.append(post.title)
 
    # Coinbase subreddit
    subreddit = reddit.subreddit('Coinbase')
    # hot posts
-   for post in subreddit.hot(limit=1000):
+   for post in subreddit.hot(limit=500):
      lst_reddit.append(post.title)
    # new posts
-   for post in subreddit.new(limit=1000):
+   for post in subreddit.new(limit=500):
      lst_reddit.append(post.title)
 
    # Binance subreddit
    subreddit = reddit.subreddit('Binance')
    # hot posts
-   for post in subreddit.hot(limit=1000):
+   for post in subreddit.hot(limit=500):
      lst_reddit.append(post.title)
    # new posts
-   for post in subreddit.new(limit=1000):
+   for post in subreddit.new(limit=500):
      lst_reddit.append(post.title)
 
    
