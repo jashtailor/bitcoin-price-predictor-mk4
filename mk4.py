@@ -53,7 +53,7 @@ def time_series():
      today = date.today()
      tickerSymbol = 'BTC-INR'
      tickerData = yf.Ticker(tickerSymbol)
-     df = tickerData.history(period='1d', start='2010-10-08', end=today)
+     df = tickerData.history(period='1d', start='2021-01-01', end=today)
      df.reset_index(inplace=True)
      
      st.write("""
