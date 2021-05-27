@@ -69,18 +69,21 @@ def time_series():
      st.write("""
      The forecasted price of Bitcoin in INR
      """)
-
+     
+     # making the model
      model = Prophet()
      Date = df['Date']
      Close = df['Close']
      df_prophet = pd.DataFrame()
      df_prophet['ds'] = Date
      df_prophet['y'] = Close
-     df_prophet.head(10)
-
+     
+     # fitting the data to the model
      model.fit(df_prophet)
      future_dates = model.make_future_dataframe(periods=365);
      prediction = model.predict(future_dates)
+     
+     # plotting the predictions
      fig = go.Figure()
      fig.add_trace(go.Scatter(x=df['Date'], y=df['Close'],
                          mode='lines',
@@ -95,14 +98,13 @@ def time_series():
                          mode='lines',
                          name='Lower limit of predicted values'))
      st.plotly_chart(fig)
-
+     
+     # input fields
      df_final = pd.DataFrame()
      df_final['Date'] = prediction['ds']
      df_final['Lower limit of Prediction'] = prediction['yhat_lower']
      df_final['Upper limit of Prediction'] = prediction['yhat_upper']
      df_final['Prediction'] = prediction['yhat']
-
-     print(df_final.head(10))
 
      user_input = st.text_input("Enter Date")
      a = df_final.loc[df_final['Date'] == user_input]
