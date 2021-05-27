@@ -266,7 +266,7 @@ def sentiment_analysis():
      tweets = tw.Cursor(api.search,
                  q=search_words,
                  lang="en",
-                 since=date_since).items(100)
+                 since=date_since).items(500)
      for tweet in tweets:
        str1 = tweet.text
        str2 = tweet.created_at
