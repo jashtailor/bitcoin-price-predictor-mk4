@@ -70,14 +70,15 @@ def time_series():
      The forecasted price of Bitcoin in INR
      """)
      
-     # making the model
-     model = Prophet()
+     # changing column headings
      Date = df['Date']
      Close = df['Close']
      df_prophet = pd.DataFrame()
      df_prophet['ds'] = Date
      df_prophet['y'] = Close
      
+     # making the model
+     model = Prophet()
      # fitting the data to the model
      model.fit(df_prophet)
      future_dates = model.make_future_dataframe(periods=365);
