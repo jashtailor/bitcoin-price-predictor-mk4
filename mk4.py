@@ -79,8 +79,11 @@ def time_series():
      
      # making the model
      model = Prophet()
+     
      # fitting the data to the model
      model.fit(df_prophet)
+     
+     # predict future prices for the next one year
      future_dates = model.make_future_dataframe(periods=365);
      prediction = model.predict(future_dates)
      
