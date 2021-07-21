@@ -53,7 +53,7 @@ def time_series():
      today = date.today()
      tickerSymbol = 'BTC-INR'
      tickerData = yf.Ticker(tickerSymbol)
-     df = tickerData.history(period='1d', start='2020-01-01', end=today)
+     df = tickerData.history(period='1d', start='2000-01-01', end=today)
      df.reset_index(inplace=True)
      
      st.write("""
@@ -69,9 +69,7 @@ def time_series():
      st.write("""
      The forecasted price of Bitcoin in INR
      """)
-     
-     st.write('hi')
-     
+        
      # changing column headings
      Date = df['Date']
      Close = df['Close']
