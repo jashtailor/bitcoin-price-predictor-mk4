@@ -70,7 +70,7 @@ def time_series():
      The forecasted price of Bitcoin in INR
      """)
      
-     st.write('hi)
+     st.write('hi')
      '''
      # changing column headings
      Date = df['Date']
