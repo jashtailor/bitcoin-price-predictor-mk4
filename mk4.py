@@ -48,7 +48,7 @@ def time_series():
      
      st.text('')
      st.text('')
-     
+     '''
      # importing the time series dataset of bitcoin prices
      today = date.today()
      tickerSymbol = 'BTC-INR'
@@ -71,7 +71,7 @@ def time_series():
      """)
      
      st.write('hi')
-     '''
+     
      # changing column headings
      Date = df['Date']
      Close = df['Close']
