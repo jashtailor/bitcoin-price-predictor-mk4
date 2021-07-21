@@ -70,6 +70,8 @@ def time_series():
      The forecasted price of Bitcoin in INR
      """)
      
+     st.write(df)
+     '''
      # changing column headings
      Date = df['Date']
      Close = df['Close']
@@ -77,7 +79,7 @@ def time_series():
      df_prophet['ds'] = Date
      df_prophet['y'] = Close
      
-     '''
+     
      # making the model
      model = Prophet()
      
