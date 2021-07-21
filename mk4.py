@@ -45,13 +45,7 @@ def time_series():
      st.write("""
      ## Time Series Forecasting using FB-Prophet
      """)
-     
-     # dropdown menu 
-     option = st.selectbox(
-          'Please select your preferred Ticker symbol',
-          ('None', 'BTC-INR', 'BTC-USD'))
-
-     
+          
      st.text('')
      st.text('')
     
