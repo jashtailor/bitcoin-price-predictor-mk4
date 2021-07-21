@@ -1,4 +1,4 @@
-from yahoofinancials import YahooFinancials
+import yfinance as yf
 import praw as pw
 import tweepy as tw
 import pandas as pd
