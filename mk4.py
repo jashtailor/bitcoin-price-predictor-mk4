@@ -1,4 +1,4 @@
-import yfinance as yf
+from yahoofinancials import YahooFinancials
 import praw as pw
 import tweepy as tw
 import pandas as pd
@@ -55,7 +55,7 @@ def time_series():
      tickerData = yf.Ticker(tickerSymbol)
      df = tickerData.history(period='1d', start='2020-01-01', end=today)
      df.reset_index(inplace=True)
-     '''
+     
      st.write("""
      Ticker chart of BTC-INR
      """)
@@ -117,7 +117,7 @@ def time_series():
      a = df_final.loc[df_final['Date'] == user_input]
 
      st.write(a['Date'], '\n', a['Lower limit of Prediction'], '\n', a['Upper limit of Prediction'], '\n', a['Prediction'])
-     '''
+     
 
 
 
