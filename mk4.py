@@ -48,14 +48,14 @@ def time_series():
      
      st.text('')
      st.text('')
-     '''
+    
      # importing the time series dataset of bitcoin prices
      today = date.today()
      tickerSymbol = 'BTC-INR'
      tickerData = yf.Ticker(tickerSymbol)
      df = tickerData.history(period='1d', start='2020-01-01', end=today)
      df.reset_index(inplace=True)
-     
+     '''
      st.write("""
      Ticker chart of BTC-INR
      """)
