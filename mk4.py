@@ -77,6 +77,7 @@ def time_series():
      df_prophet['ds'] = Date
      df_prophet['y'] = Close
      
+     '''
      # making the model
      model = Prophet()
      
@@ -114,7 +115,7 @@ def time_series():
      a = df_final.loc[df_final['Date'] == user_input]
 
      st.write(a['Date'], '\n', a['Lower limit of Prediction'], '\n', a['Upper limit of Prediction'], '\n', a['Prediction'])
-     
+     '''
 
 
 
