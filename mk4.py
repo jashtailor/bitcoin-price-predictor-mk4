@@ -224,7 +224,8 @@ def sentiment_analysis():
    # getting posts from the subreddits
    lst_reddit = []
    sentiment_lst = ['Negative', 'Neutral', 'Positive']
-
+     
+   '''
    # bitcoin subreddit
    subreddit = reddit.subreddit('bitcoin')
    # hot posts
@@ -233,7 +234,8 @@ def sentiment_analysis():
    # new posts
    for post in subreddit.new(limit=500):
      lst_reddit.append(post.title)
-   
+   '''
+
    # CryptoCurrency subreddit
    subreddit = reddit.subreddit('CryptoCurrency')
    # hot posts
